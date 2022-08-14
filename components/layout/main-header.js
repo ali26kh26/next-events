@@ -6,7 +6,6 @@ import classes from "./main-header.module.css";
 
 function MainHeader() {
   const { data: session, status } = useSession();
-  console.log(session);
   const logoutHandler = () => {
     signOut();
   };

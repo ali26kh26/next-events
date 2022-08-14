@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 import bcrypt from "bcrypt";
 export async function connectDataBase() {
   const client = await MongoClient.connect(
-    "mongodb+srv://ali26kh26:AZBY1928@cluster0.mmhxu.mongodb.net/events?retryWrites=true&w=majority"
+    `mongodb+srv://${process.env.mongodb_username}:${process.env.mongodb_password}@${process.env.mongodb_clustername}.mmhxu.mongodb.net/${process.env.mongodb_database}?retryWrites=true&w=majority`
   );
   return client;
 }

@@ -7,7 +7,6 @@ export async function findUdserById(id) {
     .db()
     .collection("next-users")
     .findOne({ _id: ObjectId(id) });
-  console.log("func : ", user);
   if (user) {
     return user;
   } else {

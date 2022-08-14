@@ -13,7 +13,6 @@ function NewComment(props) {
   const notificationCtx = useContext(NotificationContext);
 
   function sendCommentHandler(event) {
-    console.log(props.eventId);
     event.preventDefault();
 
     let enteredEmail;
@@ -64,7 +63,6 @@ function NewComment(props) {
             status: "success",
           });
           props.onSentComment();
-          console.log(data);
         })
         .catch((err) => {
           notificationCtx.showNotification({

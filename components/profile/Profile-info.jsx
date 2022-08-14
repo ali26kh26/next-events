@@ -12,7 +12,6 @@ const ProfileInfo = () => {
   if (status !== "authenticated" || !session) {
     return <p>Loading...</p>;
   }
-  console.log(session);
   return (
     <div className={classes.container}>
       <h2>Personal informations</h2>

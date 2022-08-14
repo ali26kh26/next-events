@@ -11,7 +11,6 @@ const ChangePhotoForm = ({ session }) => {
     const fileInput = Array.from(form.elements).find(
       ({ name }) => name === "file"
     );
-    console.log("file input", fileInput.files);
     const formData = new FormData();
     for (const file of fileInput.files) {
       formData.append("file", file);

@@ -112,7 +112,6 @@ async function handler(req, res) {
       res.status(401).json({ message: "cannot reply to comment" });
       return;
     }
-    console.log(result);
     res.status(201).json({ message: "your comment applied" });
   }
 }
