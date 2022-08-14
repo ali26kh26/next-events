@@ -1,0 +1,13 @@
+.form {
+  input {
+    display: none;
+  }
+  label {
+    display: inline-block;
+    padding-left: 0.5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    text-decoration: underline;
+    color: #03be9f;
+  }
+}

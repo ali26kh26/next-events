@@ -1,0 +1,37 @@
+.comment {
+  text-align: left;
+  padding: 0.5rem 0;
+  /* border-bottom: 2px solid #ccc; */
+}
+.comment hr {
+  margin-top: 0.5rem;
+  background-color: #ccc;
+  height: 2px;
+  border: none;
+}
+
+.comment p {
+  margin: 0;
+}
+
+.comment li div {
+  text-align: right;
+  font-style: italic;
+}
+
+.comment address {
+  display: inline;
+}
+.comment_action {
+  display: flex;
+  justify-content: space-between;
+}
+.comment_action p {
+  color: #03be9f;
+  cursor: pointer;
+}
+.replies {
+  width: 90%;
+  margin: 2rem 0;
+  margin-left: auto;
+}

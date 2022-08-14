@@ -1,0 +1,15 @@
+.form {
+  width: 90%;
+  max-width: 600px;
+  border-radius: 10px;
+  text-align: center;
+  background-color: aliceblue;
+  padding: 1rem;
+  margin: 0 auto;
+  margin-top: 5rem;
+}
+.form p {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #016d5b;
+}
