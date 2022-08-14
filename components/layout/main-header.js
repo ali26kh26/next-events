@@ -1,7 +1,6 @@
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import ProfilePhoto from "../profile/profile-photo/Profile-photo";
-
 import classes from "./main-header.module.css";
 
 function MainHeader() {
