@@ -5,9 +5,16 @@
   align-items: baseline;
   padding: 0 5%;
   height: 5rem;
-  background-color: #202020;
+  background-color: #000000d2;
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  box-shadow: 0 0 10px 5px #202020d2;
 }
-
+.header li {
+  cursor: pointer;
+}
 .logo {
   font-size: 1.5rem;
   color: white;
