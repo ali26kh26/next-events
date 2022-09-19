@@ -1,6 +1,6 @@
 import {
   connectDataBase,
-  getAllDocuments,
+  getFilteredDocuments,
   insertDocument,
 } from "../../../helpers/api-util";
 import { ObjectId } from "mongodb";
@@ -51,17 +51,19 @@ async function handler(req, res) {
 
   // for get comments for specific event
   else if (req.method === "GET") {
-    let documents;
+    let eventComments;
     try {
-      documents = await getAllDocuments(client, "comments", { _id: -1 });
+      eventComments = await getFilteredDocuments(
+        client,
+        "comments",
+        { eventId: eventId },
+        { _id: -1 }
+      );
     } catch (error) {
       client.close();
       res.status(500).json({ message: "fetching data failed" });
       return;
     }
-    const eventComments = documents.filter(
-      (comment) => comment.eventId === eventId
-    );
     client.close();
     res.status(201).json({ comments: eventComments });
   }
