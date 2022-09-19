@@ -25,6 +25,7 @@ export default NextAuth({
       if (token?.sub) {
         user = await findUdserById(token.sub);
         session.user.lastName = user.lastName;
+        session.user.likes = user.likes;
         if (user?.profile_url) {
           session.user.image = user.profile_url;
         }

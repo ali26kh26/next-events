@@ -1,0 +1,48 @@
+.container {
+  margin-top: 0.8rem;
+  box-shadow: 0 0 15px rgb(102, 101, 101);
+  border-radius: 8px;
+  width: 140px;
+  height: 144px;
+  background-color: white;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  li {
+    padding: 0.8rem 0.5rem;
+    margin-left: 0;
+    width: 100%;
+    height: 3rem;
+    border-bottom: 1px solid #d8d8d8;
+    font-size: 1.2rem;
+    align-items: baseline;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: #d8d8d8;
+    }
+
+    .action {
+      display: flex;
+
+      .icon {
+        color: rgb(255, 126, 126);
+        font-size: 1.4rem;
+        padding-right: 0.6rem;
+      }
+    }
+    hr {
+      width: 90%;
+      margin-left: 1rem;
+    }
+  }
+}
+
+@media (max-width: 950px) {
+  .container {
+    right: 0;
+  }
+}

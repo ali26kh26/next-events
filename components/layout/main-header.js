@@ -1,10 +1,14 @@
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useState } from "react";
 import ProfilePhoto from "../profile/profile-photo/Profile-photo";
 import classes from "./main-header.module.css";
+import UserPopUp from "./user-popup/user-popup";
 
 function MainHeader() {
   const { data: session, status } = useSession();
+  const [showUserDetail, setshowUserDetail] = useState(false);
+
   const logoutHandler = () => {
     signOut();
   };
@@ -25,17 +29,12 @@ function MainHeader() {
           )}
           {status === "authenticated" && session && (
             <>
-              <li>
-                <Link href="/profile">
-                  <a>
-                    <ProfilePhoto nav user={session.user} />
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <button className={classes.logout} onClick={logoutHandler}>
-                  Logout
-                </button>
+              <li
+                style={{ position: "relative" }}
+                onClick={() => setshowUserDetail(!showUserDetail)}
+              >
+                <ProfilePhoto nav user={session.user} />
+                {showUserDetail && <UserPopUp />}
               </li>
             </>
           )}

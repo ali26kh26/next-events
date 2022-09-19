@@ -3,7 +3,8 @@ import Button from "../ui/button";
 import DateIcon from "../icons/date-icon";
 import AddressIcon from "../icons/address-icon";
 import ArrowRightIcon from "../icons/arrow-right-icon";
-import classes from "./event-item.module.css";
+import classes from "./event-item.module.scss";
+import LikeButton from "../ui/like-button/like-button";
 function EventItem(props) {
   const { title, image, date, location, id } = props;
 
@@ -18,6 +19,7 @@ function EventItem(props) {
   return (
     <li className={classes.item}>
       <Image src={"/" + image} alt={title} width={250} height={160} />
+      <LikeButton eventId={id} />
       <div className={classes.content}>
         <div className={classes.summary}>
           <h2>{title}</h2>
