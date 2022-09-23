@@ -61,6 +61,21 @@ export async function getAllEvents() {
   return allEvents;
 }
 
+export async function getFavoriteEvents(session) {
+  const client = await connectDataBase();
+  const favoriteEventsId = session.user.likes.map((event) => event.eventId);
+  const favoriteEvents = await getFilteredDocuments(
+    client,
+    "events",
+    { id: { $in: favoriteEventsId } },
+    {},
+    { _id: 0 }
+  );
+  client.close();
+
+  return favoriteEvents;
+}
+
 export async function getFeaturedEvents() {
   const client = await connectDataBase();
   const featuredEvents = await getFilteredDocuments(

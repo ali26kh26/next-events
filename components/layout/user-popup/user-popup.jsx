@@ -16,7 +16,7 @@ const UserPopUp = () => {
         </Link>
       </li>
       <li>
-        <Link href="/events">
+        <Link href="/events/favorites">
           <div className={classes.action}>
             <div className={classes.icon}>
               <AiOutlineHeart />

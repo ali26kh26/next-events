@@ -32,4 +32,5 @@ ul {
 .center {
   margin: auto;
   text-align: center;
+  margin-top: 1rem;
 }
