@@ -4,7 +4,6 @@ import {
   insertDocument,
 } from "../../../helpers/api-util";
 import { ObjectId } from "mongodb";
-import { findParentComment } from "../../../helpers/comments-util";
 
 async function handler(req, res) {
   const eventId = req.query.eventId;
@@ -72,10 +71,6 @@ async function handler(req, res) {
   else if (req.method === "PUT") {
     const { commentId, newComment, parentId } = req.body;
 
-    let parentComment;
-    if (parentId) {
-      parentComment = await findParentComment(client, parentId);
-    }
     let selectedComment;
     const commentsCollection = client.db().collection("comments");
 

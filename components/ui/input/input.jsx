@@ -12,9 +12,8 @@ const InputUi = ({ type, value, onchange, label }) => {
       <label htmlFor={label}> {label} </label>
       <input
         id={label}
-        type={
-          type === "password" ? (showPassword ? "text" : "password") : "text"
-        }
+        type={type === "password" ? (showPassword ? "text" : "password") : type}
+        inputMode={type}
         placeholder={label}
         value={value}
         onChange={onchange}
