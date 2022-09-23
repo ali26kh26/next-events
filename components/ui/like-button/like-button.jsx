@@ -3,10 +3,15 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { useSession } from "next-auth/react";
 import Router from "next/router";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import Modal from "../modal/modal";
+import { ModalContext } from "../../../store/modalProvider";
+import Button from "../button";
 const LikeButton = ({ eventId }) => {
   const { data: session, status } = useSession();
   const [isLiked, setIsliked] = useState(false);
+  const modalCtx = useContext(ModalContext);
+
   useEffect(() => {
     if (session?.user.likes.length > 0) {
       const checkIsLiked = session.user.likes
@@ -15,10 +20,25 @@ const LikeButton = ({ eventId }) => {
       setIsliked(checkIsLiked);
     }
   }, []);
-
+  const secondButton = () => {
+    return (
+      <Button
+        onClick={() => {
+          Router.push("/login");
+          modalCtx.hideModal();
+        }}
+      >
+        Log in
+      </Button>
+    );
+  };
   const likeHandler = () => {
     if (!session) {
-      Router.push("/login");
+      modalCtx.showModal({
+        text: "You must log in to add events to your favorite",
+        Button: secondButton,
+      });
+
       return;
     }
     setIsliked((prevState) => !prevState);
@@ -31,12 +51,18 @@ const LikeButton = ({ eventId }) => {
       });
   };
   return (
-    <div
-      className={classes.like + " " + (isLiked ? classes.liked : "")}
-      onClick={likeHandler}
-    >
-      {isLiked ? <AiFillHeart /> : <AiOutlineHeart style={{ color: "red" }} />}
-    </div>
+    <>
+      <div
+        className={classes.like + " " + (isLiked ? classes.liked : "")}
+        onClick={likeHandler}
+      >
+        {isLiked ? (
+          <AiFillHeart />
+        ) : (
+          <AiOutlineHeart style={{ color: "red" }} />
+        )}
+      </div>
+    </>
   );
 };
 
