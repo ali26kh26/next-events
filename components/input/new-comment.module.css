@@ -19,6 +19,10 @@
   min-width: 10rem;
 }
 
+.control span {
+  font-weight: bold;
+}
+
 .control label {
   display: block;
   font-weight: bold;
@@ -42,6 +46,7 @@
   border: 1px solid #ccc;
   width: 100%;
   background-color: #dcfff9;
+  resize: none;
 }
 
 .form button {
