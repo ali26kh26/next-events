@@ -1,4 +1,4 @@
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
 import ProfilePhoto from "../profile/profile-photo/Profile-photo";
@@ -9,8 +9,10 @@ function MainHeader() {
   const { data: session, status } = useSession();
   const [showUserDetail, setshowUserDetail] = useState(false);
 
-  const logoutHandler = () => {
-    signOut();
+  const unMountHandler = () => {
+    setTimeout(() => {
+      setshowUserDetail(false);
+    }, 100);
   };
   return (
     <header className={classes.header}>
@@ -34,7 +36,7 @@ function MainHeader() {
                 onClick={() => setshowUserDetail(!showUserDetail)}
               >
                 <ProfilePhoto nav user={session.user} />
-                {showUserDetail && <UserPopUp />}
+                {showUserDetail && <UserPopUp unMount={unMountHandler} />}
               </li>
             </>
           )}
