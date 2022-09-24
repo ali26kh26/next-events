@@ -20,7 +20,7 @@ function NewComment(props) {
     let enteredComment;
     if (session) {
       enteredEmail = session.user.email;
-      enteredName = session.user.email;
+      enteredName = `${session.user.name} ${session.user.lastName}`;
       enteredComment = commentInputRef.current.value;
     } else {
       enteredEmail = emailInputRef.current.value;
@@ -98,15 +98,26 @@ function NewComment(props) {
         )}
         {session && (
           <>
-            <div className={classes.control}>
+            <div className={classes.control} style={{ display: "flex" }}>
               <p>{session.user.email}</p>
+              {props.comment && (
+                <>
+                  <span>&nbsp; Reply to &nbsp;</span>
+                  <p>{props.comment.name}</p>
+                </>
+              )}
             </div>
           </>
         )}
       </div>
       <div className={classes.control}>
         <label htmlFor="comment">Your comment</label>
-        <textarea id="comment" rows="5" ref={commentInputRef}></textarea>
+        <textarea
+          id="comment"
+          rows="5"
+          ref={commentInputRef}
+          placeholder="comment text ...."
+        ></textarea>
       </div>
       {isInvalid && <p>Please enter a valid email address and comment!</p>}
       {props.commentId && <button onClick={props.onSentComment}>Cancel</button>}

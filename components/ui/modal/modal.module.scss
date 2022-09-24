@@ -1,0 +1,32 @@
+.outer {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.527);
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  .inner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    height: 20vh;
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    .action {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .inner {
+    width: 80vw !important;
+  }
+}

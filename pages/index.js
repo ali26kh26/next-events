@@ -3,7 +3,10 @@ import Head from "next/head";
 import { getFeaturedEvents } from "../helpers/api-util";
 import EventList from "../components/events/event-list";
 import NewsletterRegistration from "../components/input/newsletter-registration";
+import StickyButton from "../components/ui/stickyButton/stickyButton";
+import { useSession } from "next-auth/react";
 function HomePage(props) {
+  const { data: session, status } = useSession();
   return (
     <div>
       <Head>
@@ -15,6 +18,7 @@ function HomePage(props) {
       </Head>
       <NewsletterRegistration />
       <EventList items={props.events} />
+      {!session && status === "unauthenticated" && <StickyButton />}
     </div>
   );
 }
